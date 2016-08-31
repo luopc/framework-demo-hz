@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+	   default-lazy-init="true">
+	<description>项目参数配置</description>
+	
+	<!-- 导入模块配置 -->
+	<import resource="classpath:spring/applicationContext-datasource.xml"/>
+	<import resource="classpath:spring/applicationContext-module-base.xml"/>
+	<import resource="classpath:spring/applicationContext-module-commons.xml"/>
+	<import resource="classpath:spring/applicationContext-module-mybatis.xml"/>
+	<import resource="classpath:spring/applicationContext-module-shiro.xml"/>
+	<!-- 导入插件配置 -->
+	<import resource="classpath:spring/applicationContext-plugin-audit.xml"/>
+<!-- 	<import resource="classpath:spring/applicationContext-plugin-jobs.xml"/> -->
+<!-- 	<import resource="classpath:spring/applicationContext-plugin-authsdk3.xml"/> -->
+	<import resource="classpath:spring/applicationContext-plugin-authsdk4.xml"/>
+	
+	<!-- 重新配置Shiro的缓存 -->
+	<bean id="cacheManagerShiro" class="com.cesgroup.framework.test.SingleEhCacheManager" >
+		<property name="cacheManagerConfigFile" value="classpath:ehcache/ehcache-shiro.xml" />
+	</bean>
+	
+	
+	<!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
+	<context:component-scan base-package="com.cesgroup.demo.**.service,com.cesgroup.demo.**.utils" use-default-filters="false" >
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>
+	
+	<!-- Mybatis的实体类扫描路径 -->
+	<bean class="com.cesgroup.framework.base.config.ConfigItem">
+		<property name="name" value="entityPackage"></property>
+		<property name="value" value="com.cesgroup.demo.**.entity"></property>
+	</bean>
+	
+	<!-- Mybatis的DAO扫描路径 -->
+	<bean class="com.cesgroup.framework.base.config.ConfigItem">
+		<property name="name" value="repositoryPackage"></property>
+		<property name="value" value="com.cesgroup.demo.**.dao"></property>
+	</bean>
+	
+	<!-- 数据库类型 -->
+	<!-- 
+	<bean id="com.cesgroup.framework.persistence.dialect" class="java.lang.String">
+    	<constructor-arg index="0" value="mysql"/>
+    </bean>
+     -->
+	<!-- 最大上传文件大小 -->
+	<!-- 
+	<bean id="com.cesgroup.framework.view.maxUploadSize" class="java.lang.Long">
+    	<constructor-arg index="0" value="10485760"/>
+    </bean>
+     -->
+    <!-- Shiro的默认登录页面 -->
+    <!-- 
+    <bean id="com.cesgroup.framework.security.successUrl" class="java.lang.String">
+    	<constructor-arg index="0" value="/index.jsp"/>
+    </bean>
+     -->
+    <!-- 操作日志记录级别：OFF,FATAL,ERROR,WARN,INFO,DEBUG,TRACE,ALL，默认INFO -->
+    <!-- 
+    <bean id="com.cesgroup.framework.logger.level" class="java.lang.String">
+    	<constructor-arg index="0" value="INFO"/>
+    </bean>
+     -->
+    <!-- 在多日志接口的情况下指定日志接口 -->
+    <!-- 
+    <bean id="com.cesgroup.framework.logger.loggerServiceName" class="java.lang.String">
+    	<constructor-arg index="0" value="defaultLoggerService"/>
+    </bean>
+     -->
+	<!-- 默认每页记录数 -->
+    <!-- 
+    <bean id="com.cesgroup.framework.search.defaultPagesize" class="java.lang.Integer">
+    	<constructor-arg index="0" value="20"/>
+    </bean>
+     -->
+    <!-- 默认当前页号参数名称 -->
+    <!-- 
+    <bean id="com.cesgroup.framework.search.defaultPageNumberParam" class="java.lang.String">
+    	<constructor-arg index="0" value="P_pageNumber"/>
+    </bean>
+     -->
+    <!-- 默认每页记录数参数名称 -->
+    <!-- 
+    <bean id="com.cesgroup.framework.search.defaultPageSizeParam" class="java.lang.String">
+    	<constructor-arg index="0" value="P_pagesize"/>
+    </bean>
+     -->
+    <!-- 默认排序参数名称（排序字段,[排序字段,排序方式],[排序字段]） -->
+    <!-- 
+    <bean id="com.cesgroup.framework.search.defaultOrderParam" class="java.lang.String">
+    	<constructor-arg index="0" value="P_orders"/>
+    </bean>
+     -->
+    <!-- session超时时间，默认30分钟 -->
+    <!-- 
+    <bean id="com.cesgroup.framework.security.sessionTimeout" class="java.lang.Long">
+    	<constructor-arg index="0" value="1800000"/>
+    </bean>
+     -->
+    <!-- 记住我cookie超时时间，默认7天 -->
+    <!-- 
+    <bean id="com.cesgroup.framework.security.rememberMeTimeout" class="java.lang.Long">
+    	<constructor-arg index="0" value="604800"/>
+    </bean>
+     -->
+	<!-- 数据库ID键值对（xx=xx,xx=xx），已经默认添加了SQL Server=sqlserver、DB2=db2、Oracle=oracle、MySQL=mysql、H2=h2 -->
+    <!-- 
+    <bean id="com.cesgroup.framework.persistence.databaseId" class="java.lang.String">
+    	<constructor-arg index="0" value="DM=dm,Gbase=gbase"/>
+    </bean>
+     -->
+</beans>

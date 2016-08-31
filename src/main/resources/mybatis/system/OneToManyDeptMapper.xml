@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cesgroup.demo.relevance.dao.OneToManyDeptMapper">
+	<resultMap id="OneToManyDeptResultMap" type="com.cesgroup.demo.relevance.entity.OneToManyDept">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="code" property="code" jdbcType="VARCHAR" />
+		<result column="comments" property="comments" jdbcType="VARCHAR" />
+		<result column="order_no" property="orderNo" jdbcType="INTEGER" />
+		<result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+		<collection property="users" columnPrefix="t1_" ofType="com.cesgroup.demo.base.entity.User">
+			<id column="id" property="id" jdbcType="VARCHAR" />
+			<result column="login_name" property="loginName" jdbcType="VARCHAR" />
+			<result column="name" property="name" jdbcType="VARCHAR" />
+			<result column="plain_password" property="plainPassword" jdbcType="VARCHAR" />
+			<result column="password" property="password" jdbcType="VARCHAR" />
+			<result column="salt" property="salt" jdbcType="VARCHAR" />
+			<result column="roles" property="roles" jdbcType="VARCHAR" />
+			<result column="register_date" property="registerDate" jdbcType="TIMESTAMP" />
+			<result column="dept_id" property="deptId" jdbcType="VARCHAR" />
+		</collection>
+	</resultMap>
+
+	<select id="selectAllOneToManyDept" resultMap="OneToManyDeptResultMap">
+		SELECT t_fw_dept.ID,t_fw_dept.NAME,t_fw_dept.CODE,t_fw_dept.COMMENTS,t_fw_dept.ORDER_NO,t_fw_dept.PARENT_ID,t_fw_user.ID
+			t1_ID,t_fw_user.LOGIN_NAME t1_LOGIN_NAME,t_fw_user.NAME
+			t1_NAME,t_fw_user.PLAIN_PASSWORD t1_PLAIN_PASSWORD,t_fw_user.PASSWORD
+			t1_PASSWORD,t_fw_user.SALT t1_SALT,t_fw_user.ROLES
+			t1_ROLES,t_fw_user.REGISTER_DATE t1_REGISTER_DATE,t_fw_user.DEPT_ID
+			t1_DEPT_ID
+		FROM t_fw_dept left join t_fw_user on t_fw_dept.id=t_fw_user.dept_id
+	</select>
+</mapper>

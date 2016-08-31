@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cesgroup.demo.relevance.dao.UserDeptDao">
+	<select id="findUserDept" resultType="com.cesgroup.demo.relevance.entity.UserDept">
+		select u.*,d.name dept_name,d.code from t_fw_user u,t_fw_dept d
+		where u.dept_id=d.id
+		and u.name like #{0, typeHandler=com.cesgroup.framework.mybatis.mapper.handler.LikeTypeHandler}
+		and d.name like #{1, typeHandler=com.cesgroup.framework.mybatis.mapper.handler.LikeTypeHandler}
+	</select>
+</mapper>

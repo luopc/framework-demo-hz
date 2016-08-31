@@ -1,0 +1,167 @@
+.coral-component-overlay {
+	background: none repeat scroll 0 0 #e5e5e5;
+}
+/**grid**/
+.coral-grid-columns .coral-state-default {
+	background-color: #f5f5f5;
+}
+
+.coral-grid-rows .coral-state-hover {
+	border-color: #e2eff8;
+	background-color: #e2eff8;
+}
+
+.coral-grid-rows .coral-state-highlight {
+	border-color: #c1ddf1;
+	background-color: #c1ddf1;
+}
+/**tabs**/
+.coral-tabs>.coral-tabs-nav>li>.coral-tabs-anchor {
+	padding: .5em .9em;
+}
+
+.coral-tabs>.coral-tabs-nav>.coral-state-default {
+	margin: 0;
+	margin-right: 1px;
+	margin-bottom: -1px;
+}
+
+.coral-tabs-left>.coral-tabs-nav>.coral-state-default {
+	margin: 0;
+	margin-right: -1px;
+	margin-bottom: 1px;
+}
+
+.coral-tabs-right>.coral-tabs-nav>.coral-state-default {
+	margin: 0;
+	margin-left: -1px;
+	margin-bottom: 1px;
+}
+
+.coral-tabs-bottom>.coral-tabs-nav>.coral-state-default {
+	margin: 0;
+	margin-right: 1px;
+	margin-top: -1px;
+}
+
+.coral-tabs>.coral-tabs-nav>.coral-state-default>.coral-tabs-anchor {
+	border-color: transparent;
+	background-color: transparent;
+	color: #333;
+}
+
+.coral-tabs>.coral-tabs-nav>.coral-state-hover>.coral-tabs-anchor {
+	border-color: #eee #eee #ddd;
+	background-color: #eee;
+	color: #666;
+}
+
+.coral-tabs>.coral-tabs-nav>.coral-tabs-newbtn.coral-state-hover>.coral-tabs-anchor {
+	background: inherit;
+	color: #eee;
+}
+
+.coral-tabs>.coral-tabs-nav>.coral-state-active>.coral-tabs-anchor,
+	.coral-tabs>.coral-tabs-nav>.coral-tabs-loading>.coral-tabs-anchor {
+	border-color: #eaeaea #eaeaea transparent #eaeaea;
+	background-color: #fff;
+	color: #555;
+}
+
+.coral-tabs>.coral-tabs-nav {
+	border-bottom: 1px solid #eaeaea;
+	background: transparent;
+}
+
+.coral-tabs-left>.coral-tabs-nav {
+	border: medium none;
+	border-right: 4px solid #add2ed;
+}
+
+.coral-tabs-right>.coral-tabs-nav {
+	border: medium none;
+	border-left: 4px solid #add2ed;
+}
+
+.coral-tabs-bottom>.coral-tabs-nav {
+	border: medium none;
+	border-top: 4px solid #add2ed;
+}
+
+.coral-tabs .coral-tabs-panel {
+	background-color: #fff;
+}
+.coral-tabs > .coral-tabs-nav > li.coral-tabs-newbtn{
+	margin: 0;
+}
+/*accordion**/
+.coral-accordion-header.coral-state-default {
+	background: none repeat scroll 0 0 #dfeaf2;
+}
+
+.coral-accordion-header.coral-state-hover {
+	background: none repeat scroll 0 0 #e6f1f9;
+}
+
+.coral-accordion-header.coral-state-active {
+	background: none repeat scroll 0 0 #dfeaf2;
+}
+
+.coral-accordion .coral-accordion-header {
+	margin: 2px 0;
+	border-radius: 0;
+	padding: .8em .5em .8em .7em;
+	color: #666;
+}
+
+/**layout*/
+.coral-panel-header {
+	border: 1px solid #157fcc;
+	background: #157fcc;
+}
+
+.coral-layout-expand {
+	background-color: #3892d3;
+}
+/**menu*/
+.coral-menu-child .coral-menuitem-active, .coral-menu-child .coral-state-hover
+	{
+	background: #d6e8f6;
+	color: #000;
+	border-color: transparent;
+}
+/**tree*/
+.coral-tree li a.curSelectedNode {
+    background-color: #c1ddf1;
+    color: #000;
+}
+/*datepicker*/
+.coral-datepicker .coral-datepicker-header{
+	background: #f5f5f5;
+	color: #333;
+}
+
+.coral-datepicker .coral-datepicker-prev-hover, .coral-datepicker .coral-datepicker-next-hover
+	{
+	background: #d6e8f6;
+}
+
+.coral-datepicker-calendar tbody tr td .coral-state-hover {
+	background: #d6e8f6;
+}
+
+.coral-datepicker .coral-datepicker-title select{
+	background: none repeat scroll 0% 0% #F5F5F5;
+	color: #333;
+}
+
+.coral-datepicker .coral-datepicker-header select, .coral-datepicker .coral-datepicker-header .coral-state-default{
+	background: transparent;
+}
+
+/**custom pager begin*/
+.coral-state-disabled .coral-icon-seek-first{
+	background-image: url("images/seek-first.png");
+	background-position: 0 2px;
+}
+/**custom pager end*/

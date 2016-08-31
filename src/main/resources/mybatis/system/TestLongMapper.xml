@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cesgroup.demo.system.dao.TestLongMapper">
+	<resultMap id="UserResultMap" type="com.cesgroup.demo.system.entity.TestLongEntity">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<insert id="insertList" parameterType="com.cesgroup.demo.system.entity.TestLongEntity" flushCache="true">
+		<selectKey resultType="long" keyProperty="id" order="AFTER">
+			SELECT LAST_INSERT_ID()  
+		</selectKey>  
+    	insert into t_fw_test (name) values  
+	    <foreach collection="collection" item="item" index="index" separator="," >  
+	        (#{item.name})  
+	    </foreach>  
+	</insert>
+</mapper>

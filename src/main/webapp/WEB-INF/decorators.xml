@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/layouts/">
+	<!-- 配置不需要渲染的路径  -->
+	<excludes>
+		<pattern>/department*/*/list*</pattern>
+		<pattern>/login*</pattern>
+		<pattern>/register*</pattern>
+		<pattern>/department*/*/new*</pattern>
+		<pattern>/department*/*/show*</pattern>
+		<pattern>/department/edit*</pattern>
+		<pattern>/user*/*/new*</pattern>
+		<pattern>/user*/*/show*</pattern>
+		<pattern>/user/edit*</pattern>
+		<pattern>/user*/*/list*</pattern>
+		
+		
+	</excludes>
+
+	<!-- 用来定义装饰器要过滤的页面 -->
+	<decorator name="editorview" page="editorview.jsp">
+		
+		
+	</decorator>
+	
+	<!-- 用来定义装饰器要过滤的页面 -->
+	<decorator name="default" page="default.jsp">
+		<pattern>/*</pattern>
+	</decorator>
+</decorators>

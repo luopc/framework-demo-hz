@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cesgroup.demo.base.dao.DeptMapper">
+	<resultMap id="DeptResultMap" type="com.cesgroup.demo.base.entity.Dept">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="code" property="code" jdbcType="VARCHAR" />
+		<result column="comments" property="comments" jdbcType="VARCHAR" />
+		<result column="order_no" property="orderNo" jdbcType="INTEGER" />
+		<result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 批量插入 -->
+	<insert id="insertBatch" parameterType="com.cesgroup.demo.base.entity.Dept" flushCache="true">
+		insert into t_fw_dept
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			id, name, code, comments, order_no, parent_id,
+		</trim>
+		values
+		<foreach collection="collection" index="index" item="item" separator=",">
+			(
+			<trim suffixOverrides=",">
+				#{item.id,jdbcType=VARCHAR}, #{item.name,jdbcType=VARCHAR}, #{item.code,jdbcType=VARCHAR}, #{item.comments,jdbcType=VARCHAR}, #{item.orderNo,jdbcType=INTEGER}, #{item.parentId,jdbcType=VARCHAR},
+			</trim>
+			)
+		</foreach>
+	</insert>
+</mapper>
